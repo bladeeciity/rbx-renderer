@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -124,6 +124,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>$(ProjectDir)libraries\imgui\include\;$(ProjectDir)source\graphics\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,10 +134,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="libraries\imgui\source\imgui.cpp" />
+    <ClCompile Include="libraries\imgui\source\imgui_demo.cpp" />
+    <ClCompile Include="libraries\imgui\source\imgui_draw.cpp" />
+    <ClCompile Include="libraries\imgui\source\imgui_impl_dx11.cpp" />
+    <ClCompile Include="libraries\imgui\source\imgui_impl_win32.cpp" />
+    <ClCompile Include="libraries\imgui\source\imgui_tables.cpp" />
+    <ClCompile Include="libraries\imgui\source\imgui_widgets.cpp" />
     <ClCompile Include="source\entry.cpp" />
+    <ClCompile Include="source\graphics\render\render.cpp" />
+    <ClCompile Include="source\hooks\hooks.cpp" />
+    <ClCompile Include="source\hooks\vmt\vmt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libraries\imgui\include\imconfig.h" />
+    <ClInclude Include="libraries\imgui\include\imgui.h" />
+    <ClInclude Include="libraries\imgui\include\imgui_impl_dx11.h" />
+    <ClInclude Include="libraries\imgui\include\imgui_impl_win32.h" />
+    <ClInclude Include="libraries\imgui\include\imgui_internal.h" />
+    <ClInclude Include="libraries\imgui\include\imstb_rectpack.h" />
+    <ClInclude Include="libraries\imgui\include\imstb_textedit.h" />
+    <ClInclude Include="libraries\imgui\include\imstb_truetype.h" />
+    <ClInclude Include="source\graphics\render\render.hpp" />
+    <ClInclude Include="source\hooks\hooks.hpp" />
+    <ClInclude Include="source\hooks\vmt\vmt.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

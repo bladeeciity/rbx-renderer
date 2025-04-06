@@ -2,11 +2,17 @@
 #include "cstdint"
 #include "thread"
 
+#include "render/render.hpp"
+#include "hooks/hooks.hpp"
+
 namespace module
 {
     static void on_attach( ) noexcept
     {
-        MessageBoxA( 0, "hello", "world", 0 );
+        module::g_render = std::make_unique< module::c_render >( );
+        module::g_hooks  = std::make_unique< module::c_hooks >( );
+
+        module::g_hooks->hook( );
     }
 } // namespace module
 
