@@ -58,8 +58,6 @@ namespace module
             if ( !ImGui::GetCurrentContext( ) )
                 ImGui::CreateContext( );
 
-            ImGui::StyleColorsClassic( );
-
             if ( !ImGui_ImplWin32_Init( back_buffer_desc.OutputWindow ) )
                 return false;
 
