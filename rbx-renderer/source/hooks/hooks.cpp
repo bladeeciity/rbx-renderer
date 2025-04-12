@@ -1,17 +1,19 @@
 #include "hooks.hpp"
 
+#include "interface/interface.hpp"
+
 namespace module
 {
-    void c_hooks::hook( ) noexcept
+    c_hooks::c_hooks( ) noexcept
     {
         /*\
-         * @xref: "rbxasset://configs/PerformanceConfigs/rofiler.tools.js"
-         * @note: v16 = (unsigned __int8 (__fastcall *)(_QWORD *, _QWORD *))qword_5FFA5E8;
-         * @note: ^^ xref, that first xref and above it is the ptr to visual engine
+         * @xref: "AutoCapture_{}_Frames-{}-{}.raw"
+         * @note: above that string look for [ byte_xxxxxxx = 1; ] , xref that ( first xref - mov )
+         * a line below that in the function is a pointer to visual engine
         \*/
 
         const auto base          = reinterpret_cast< std::uintptr_t >( GetModuleHandleA( nullptr ) );
-        const auto visual_engine = *reinterpret_cast< std::uintptr_t * >( base + 0x5ffa5e0 );
+        const auto visual_engine = *reinterpret_cast< std::uintptr_t * >( base + 0x60684b8 );
         if ( !visual_engine )
             return;
 
@@ -45,10 +47,7 @@ namespace module
 
             {
                 g_render->new_frame( );
-
-                ImGui::Begin( "Test" );
-                ImGui::End( );
-
+                g_ui->render( );
                 g_render->render( swap_chain );
             }
         }
@@ -64,8 +63,8 @@ namespace module
                                                     const std::uint32_t width, const std::uint32_t height, const std::int32_t new_format,
                                                     const std::uint32_t swap_chain_flags ) noexcept
     {
-        auto                                     result = reinterpret_cast< decltype( &resize_buffers ) >( g_hooks->_hook->old( 13 ) );
-        std::unique_lock< std::recursive_mutex > lock( g_hooks->_mutex );
+        auto             result = reinterpret_cast< decltype( &resize_buffers ) >( g_hooks->_hook->old( 13 ) );
+        std::unique_lock lock( g_hooks->_mutex );
 
         g_render->resize_buffers( );
         return result( swap_chain, buffer_count, width, height, new_format, swap_chain_flags );

@@ -1,5 +1,7 @@
 #include "render.hpp"
 
+#include "interface/interface.hpp"
+
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler( HWND hWindow, UINT uMsg, WPARAM wParam, LPARAM lParam );
 
 namespace module
@@ -21,6 +23,9 @@ namespace module
 
         if ( ImGui::GetCurrentContext( ) )
             ImGui_ImplWin32_WndProcHandler( window, msg, u_param, i_param );
+
+        if ( msg == WM_KEYDOWN && u_param == VK_INSERT )
+            g_ui->opened( ) == !g_ui->opened( );
 
         // @todo: window proc
 
@@ -60,6 +65,8 @@ namespace module
 
             if ( !ImGui_ImplDX11_Init( _device, _device_context ) )
                 return false;
+
+            module::g_ui = std::make_unique< module::ui_t >( );
 
             _wnd_proc = reinterpret_cast< WNDPROC >(
                 SetWindowLongPtrA( back_buffer_desc.OutputWindow, GWLP_WNDPROC, reinterpret_cast< LONG_PTR >( &wnd_proc ) ) );

@@ -11,7 +11,7 @@ namespace module
     class c_hooks
     {
       public:
-        void hook( ) noexcept;
+        c_hooks( ) noexcept;
 
       private:
         std::recursive_mutex _mutex { };

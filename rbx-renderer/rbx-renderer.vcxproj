@@ -142,6 +142,7 @@
     <ClCompile Include="libraries\imgui\source\imgui_tables.cpp" />
     <ClCompile Include="libraries\imgui\source\imgui_widgets.cpp" />
     <ClCompile Include="source\entry.cpp" />
+    <ClCompile Include="source\graphics\interface\interface.cpp" />
     <ClCompile Include="source\graphics\render\render.cpp" />
     <ClCompile Include="source\hooks\hooks.cpp" />
     <ClCompile Include="source\hooks\vmt\vmt.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="libraries\imgui\include\imstb_rectpack.h" />
     <ClInclude Include="libraries\imgui\include\imstb_textedit.h" />
     <ClInclude Include="libraries\imgui\include\imstb_truetype.h" />
+    <ClInclude Include="source\graphics\interface\interface.hpp" />
     <ClInclude Include="source\graphics\render\render.hpp" />
     <ClInclude Include="source\hooks\hooks.hpp" />
     <ClInclude Include="source\hooks\vmt\vmt.hpp" />

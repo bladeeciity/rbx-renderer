@@ -48,6 +48,9 @@
     <ClCompile Include="source\hooks\vmt\vmt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\graphics\interface\interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".clang-format" />
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\hooks\vmt\vmt.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\graphics\interface\interface.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

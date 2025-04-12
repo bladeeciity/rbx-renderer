@@ -11,8 +11,6 @@ namespace module
     {
         module::g_render = std::make_unique< module::c_render >( );
         module::g_hooks  = std::make_unique< module::c_hooks >( );
-
-        module::g_hooks->hook( );
     }
 } // namespace module
 
