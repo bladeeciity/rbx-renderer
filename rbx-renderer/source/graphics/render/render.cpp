@@ -27,8 +27,6 @@ namespace module
         if ( msg == WM_KEYDOWN && u_param == VK_INSERT )
             g_ui->opened( ) = !g_ui->opened( );
 
-        // @todo: window proc
-
         return CallWindowProc( g_render->_wnd_proc, window, msg, u_param, i_param );
     }
 
@@ -99,7 +97,7 @@ namespace module
         if ( _target_view )
             return true;
 
-        ID3D11Texture2D *back_buffer = nullptr;
+        ID3D11Texture2D *back_buffer { };
         if ( FAILED( swap_chain->GetBuffer( 0, IID_PPV_ARGS( &back_buffer ) ) ) )
             return false;
 
