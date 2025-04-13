@@ -25,7 +25,7 @@ namespace module
             ImGui_ImplWin32_WndProcHandler( window, msg, u_param, i_param );
 
         if ( msg == WM_KEYDOWN && u_param == VK_INSERT )
-            g_ui->opened( ) == !g_ui->opened( );
+            g_ui->opened( ) = !g_ui->opened( );
 
         // @todo: window proc
 
