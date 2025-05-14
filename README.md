@@ -1,1 +1,1 @@
-POC of hooking roblox's d3d11 swapchain
+finding roblox's custom device & hijacking their swapchain
