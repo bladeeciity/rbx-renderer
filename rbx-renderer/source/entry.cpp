@@ -1,9 +1,12 @@
-#include "windows.h"
-#include "cstdint"
-#include "thread"
-
 #include "render/render.hpp"
 #include "hooks/hooks.hpp"
+
+#include <cstdint>
+#include <thread>
+
+// clang-format off
+#include <windows.h>
+// clang-format on
 
 namespace module
 {

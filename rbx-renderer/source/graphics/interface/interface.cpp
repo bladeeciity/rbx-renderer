@@ -2,7 +2,7 @@
 
 namespace module
 {
-    ui_t::ui_t( ) noexcept
+    c_ui::c_ui( ) noexcept
     {
         auto &style { ImGui::GetStyle( ) };
 
@@ -17,12 +17,15 @@ namespace module
         ImGui::StyleColorsClassic( );
     }
 
-    void ui_t::render( ) const noexcept
+    void c_ui::render( ) noexcept
     {
-        if ( !_opened )
+        if ( !m_opened )
             return;
 
-        ImGui::Begin( "Window" );
+        if ( ImGui::Begin( "Window" ) )
+        {
+            ImGui::Text( "Hello, world!" );
+        }
         ImGui::End( );
     }
 } // namespace module

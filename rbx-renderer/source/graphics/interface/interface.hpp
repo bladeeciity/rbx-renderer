@@ -1,25 +1,38 @@
 #pragma once
 
-#include "imgui.h"
+#include <imgui.h>
 
-#include "memory"
+#include <memory>
 
 namespace module
 {
-    struct ui_t
+    /**
+     * @brief User Interface (UI) management class.
+     */
+    class c_ui
     {
-        ui_t( ) noexcept;
+      public:
+        /**
+         * @brief Default constructor.
+         */
+        c_ui( ) noexcept;
 
-        bool &opened( ) noexcept
+        /**
+         * @brief Returns reference to flag indicating if UI is open.
+         */
+        bool& opened( ) noexcept
         {
-            return _opened;
+            return m_opened;
         }
 
-        void render( ) const noexcept;
+        /**
+         * @brief Render the UI.
+         */
+        void render( ) noexcept;
 
       private:
-        bool _opened { true };
+        bool m_opened { true }; // Flag to indicate whether the UI is open.
     };
 
-    inline auto g_ui { std::unique_ptr< ui_t > {} };
+    inline auto g_ui { std::unique_ptr< c_ui > {} };
 } // namespace module
