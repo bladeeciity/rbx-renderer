@@ -6,7 +6,9 @@ namespace module
     {
         auto &style { ImGui::GetStyle( ) };
 
-        style.WindowRounding    = 0.0f;
+        style.AntiAliasedLines  = false;
+        style.AntiAliasedFill   = false;
+        style.WindowRounding    = 0.f;
         style.ChildRounding     = 6.f;
         style.PopupRounding     = 2.f;
         style.FrameRounding     = 2.f;
