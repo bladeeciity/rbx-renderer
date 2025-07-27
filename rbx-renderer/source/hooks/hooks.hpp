@@ -32,7 +32,6 @@ namespace module
         c_hooks( ) noexcept;
 
       private:
-        mutable std::recursive_mutex m_mutex { }; // Mutex for thread-safe hook operations.
         std::unique_ptr< c_vmt >     m_hook { };  // VMT hook manager for swap chain.
     };
 
