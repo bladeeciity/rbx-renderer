@@ -31,10 +31,6 @@ namespace module
     {
         auto original_present = reinterpret_cast< decltype( &present ) >( g_hooks->m_hook->old( 8 ) );
 
-        std::unique_lock lock { g_hooks->m_mutex, std::try_to_lock };
-        if ( !lock.owns_lock( ) )
-            return original_present( swap_chain, sync_interval, flags );
-
         try
         {
             // This is quite long but I couldn't find a better way to do this without crashing :/
@@ -57,10 +53,6 @@ namespace module
                                                     std::uint32_t height, std::int32_t new_format, std::uint32_t flags ) noexcept
     {
         auto original_resize = reinterpret_cast< decltype( &resize_buffers ) >( g_hooks->m_hook->old( 13 ) );
-
-        std::unique_lock lock { g_hooks->m_mutex, std::try_to_lock };
-        if ( !lock.owns_lock( ) )
-            return original_resize( swap_chain, buffer_count, width, height, new_format, flags );
 
         g_render->resize_buffers( );
         return original_resize( swap_chain, buffer_count, width, height, new_format, flags );
