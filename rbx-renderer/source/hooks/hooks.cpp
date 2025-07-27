@@ -10,12 +10,12 @@ namespace module
         const auto base = reinterpret_cast< std::uintptr_t >( GetModuleHandleA( nullptr ) );
 
         // Retrieve the address of the VisualEngine.
-        const auto visual_engine = *reinterpret_cast< std::uintptr_t* >( base + 0x636bde8 );
+        const auto visual_engine = *reinterpret_cast< std::uintptr_t* >( base + 0x6719638ui64 );
         if ( !visual_engine )
             return;
 
         // Retrieve Roblox's custom device.
-        const auto rbx_device = *reinterpret_cast< std::uintptr_t* >( visual_engine + 0xa8 );
+        const auto rbx_device = *reinterpret_cast< std::uintptr_t* >( visual_engine + 0x90ui64 );
         if ( !rbx_device )
             return;
 
